@@ -49,15 +49,39 @@
     tilesNodes.forEach(tile=> tile.addEventListener('click', onTile));
   }
 
-  function onTile(e){
-    const tile = e.currentTarget; if (lock || tile.classList.contains('matched') || tile.classList.contains('revealed')) return;
-    tile.classList.add('revealed');
-    if (!first){ first=tile; return; }
-    if (first.dataset.key === tile.dataset.key && first!==tile){
-      first.classList.add('matched'); tile.classList.add('matched'); matches++; corrOut.textContent=String(matches); SFX.match();
-    } else { SFX.wrong(); }
-    lock=true; setTimeout(()=>{ tilesNodes.forEach(t=>{ if(!t.classList.contains('matched')) t.classList.remove('revealed'); }); lock=false; first=null; sOut.textContent=String(scoreNow()); if (matches===10){ finish(); } }, 550);
+  
+function onTile(e){
+  const tile = e.currentTarget;
+- if (lock || tile.classList.contains('matched') || tile.classList.contains('revealed')) return;
++ const mode = document.getElementById('memMode').value;
++ const isOpenMode = (mode === 'open');
++ if (lock || tile.classList.contains('matched') || (tile.classList.contains('revealed') && !isOpenMode)) return;
+
+  tile.classList.add('revealed');
+  if (!first){ first = tile; return; }
+
+  if (first.dataset.key === tile.dataset.key && first !== tile){
+    first.classList.add('matched');
+    tile.classList.add('matched');
+    matches++; corrOut.textContent = String(matches);
+    SFX.match();
+  } else {
+    SFX.wrong();
   }
+
+  lock = true;
+  setTimeout(() => {
+-   tilesNodes.forEach(t => { if (!t.classList.contains('matched')) t.classList.remove('revealed'); });
++   if (!isOpenMode) {
++     tilesNodes.forEach(t => { if (!t.classList.contains('matched')) t.classList.remove('revealed'); });
++   }
+    lock = false;
+    first = null;
+    sOut.textContent = String(scoreNow());
+    if (matches === 10){ finish(); }
+  }, 550);
+}
+
 
   function finish(){
     timer.stop();
