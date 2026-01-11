@@ -14,16 +14,63 @@
   const SFX = { click(){beep({freq:500,type:'square',duration:.07,volume:.18});}, correct(){beep({freq:880});}, wrong(){beep({freq:220,type:'sawtooth'});}, success(){beep({freq:660,type:'triangle',duration:.25});}, match(){beep({freq:720});}, toggle(){ setMuted(!muted); }, isMuted(){ return muted; } };
   window.AppUtil = { Timer, SFX };
   
-function showPreviewOverlay(title, innerHTML){
-  const old = document.getElementById('previewOverlay'); if (old) old.remove();
-  const wrap = document.createElement('div'); wrap.id='previewOverlay';
-  wrap.style.cssText = 'position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:20px;';
-  const card = document.createElement('div'); card.style.cssText='max-width:min(900px, 90vw); max-height:min(80vh, 80vh); overflow:auto; background:var(--card); color:var(--text); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow); padding:16px;';
-  card.innerHTML = `... title + Close button + content ...`;
-  wrap.appendChild(card);
-  document.body.appendChild(wrap);
-  document.getElementById('closePreview').addEventListener('click', ()=> wrap.remove());
-  wrap.addEventListener('click', (e)=>{ if(e.target===wrap) wrap.remove(); });
-}
 
+
+
+})();
+// ===== Preview Overlay helper (global under AppUtil) =====
+(function () {
+  function showPreview(title, innerHTML) {
+    const existing = document.getElementById('previewOverlay');
+    if (existing) existing.remove();
+
+    // Backdrop
+    const wrap = document.createElement('div');
+    wrap.id = 'previewOverlay';
+    wrap.style.cssText = [
+      'position:fixed',
+      'inset:0',
+      'z-index:2000',
+      'background:rgba(0,0,0,.6)',
+      'display:flex',
+      'align-items:center',
+      'justify-content:center',
+      'padding:20px'
+    ].join(';');
+
+    // Card
+    const card = document.createElement('div');
+    card.style.cssText = [
+      'max-width:min(900px, 90vw)',
+      'max-height:min(80vh, 80vh)',
+      'overflow:auto',
+      'background:var(--card)',
+      'color:var(--text)',
+      'border:1px solid var(--border)',
+      'border-radius:12px',
+      'box-shadow:var(--shadow)',
+      'padding:16px'
+    ].join(';');
+
+    // Actual title + Close + content
+    card.innerHTML =
+      `<div style="display:flex;align-items:center;gap:12px;position:sticky;top:0;background:var(--card);padding:6px 0 8px">` +
+      `<h2 style="margin:0;font-size:18px">${title}</h2>` +
+      `<button id="closePreview" class="btn" style="margin-left:auto">Close</button>` +
+      `</div>` +
+      `<div class="small" style="opacity:.8;margin-bottom:8px">Preview (read-only)</div>` +
+      `<div>${innerHTML}</div>`;
+
+    wrap.appendChild(card);
+    document.body.appendChild(wrap);
+
+    // Close behavior
+    const close = () => wrap.remove();
+    document.getElementById('closePreview').addEventListener('click', close);
+    wrap.addEventListener('click', (e) => { if (e.target === wrap) close(); });
+  }
+
+  // Expose via AppUtil (alongside Timer/SFX)
+  window.AppUtil = window.AppUtil || {};
+  window.AppUtil.showPreview = showPreview;
 })();
