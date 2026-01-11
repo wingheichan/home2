@@ -1,0 +1,61 @@
+
+(async function(){
+  const { Timer, SFX } = window.AppUtil; const DATA = await (await fetch('data/memory.json')).json();
+  const $ = s=>document.querySelector(s); const $$ = s=>Array.from(document.querySelectorAll(s));
+  const selCat=$('#memCat'), selSub=$('#memSub'), selMode=$('#memMode'); const grid=$('#memGrid'); const tOut=$('#memTime'); const corrOut=$('#memCorrect'); const sOut=$('#memScore'); const hOut=$('#memHigh'); const timer=new Timer(tOut);
+  function fill(sel, items){ sel.innerHTML=''; items.forEach(v=> sel.append(new Option(v,v))); }
+  function bestKey(){ return `highscore:memory:${selCat.value}:${selSub.value}:${selMode.value}`; }
+  function loadHigh(){ const v=JSON.parse(localStorage.getItem(bestKey())||'0'); hOut.textContent = v||0; }
+  fill(selCat, Object.keys(DATA)); function updateSub(){ fill(selSub, Object.keys(DATA[selCat.value]||{})); loadHigh(); } selCat.addEventListener('change', updateSub); selSub.addEventListener('change', loadHigh); selMode.addEventListener('change', loadHigh); updateSub();
+
+  let first=null, lock=false, matches=0, moves=0, totalPairs=10, tilesNodes=[];
+  function buildTiles(){
+    const pairs = ((DATA[selCat.value]||{})[selSub.value]||[]);
+    const pool = pairs.length>=totalPairs ? pairs.slice().sort(()=>Math.random()-0.5).slice(0,totalPairs)
+                  : pairs.concat(pairs).slice(0,totalPairs); // ensure at least 10
+    const tiles = pool.flatMap(p=>[{key:p.a, val:p.a},{key:p.a, val:p.b}]).sort(()=>Math.random()-0.5);
+    grid.innerHTML = tiles.map((t,i)=>`<div class="card-tile" data-key="${t.key}" data-i="${i}">${t.val}</div>`).join('');
+    tilesNodes = $$('.card-tile');
+  }
+
+  function start(){
+    buildTiles(); first=null; lock=false; matches=0; moves=0; corrOut.textContent='0'; sOut.textContent='0'; timer.reset();
+    const mode = selMode.value; SFX.click();
+    if (mode==='open'){
+      tilesNodes.forEach(t=> t.classList.add('revealed'));
+      timer.start();
+      enableClicks();
+    } else if (mode==='preview'){
+      tilesNodes.forEach(t=> t.classList.add('revealed'));
+      timer.start();
+      setTimeout(()=>{ tilesNodes.forEach(t=>{ if(!t.classList.contains('matched')) t.classList.remove('revealed'); }); enableClicks(); }, 10000);
+    } else { // closed
+      timer.start(); enableClicks();
+    }
+  }
+
+  function scoreNow(){ const secs=Math.floor(timer.elapsedMs()/1000); const correct=matches; return (50*correct) + Math.max(0, 51 - secs); }
+
+  function enableClicks(){
+    tilesNodes.forEach(tile=> tile.addEventListener('click', onTile));
+  }
+
+  function onTile(e){
+    const tile = e.currentTarget; if (lock || tile.classList.contains('matched') || tile.classList.contains('revealed')) return;
+    tile.classList.add('revealed');
+    if (!first){ first=tile; return; }
+    if (first.dataset.key === tile.dataset.key && first!==tile){
+      first.classList.add('matched'); tile.classList.add('matched'); matches++; corrOut.textContent=String(matches); SFX.match();
+    } else { SFX.wrong(); }
+    lock=true; setTimeout(()=>{ tilesNodes.forEach(t=>{ if(!t.classList.contains('matched')) t.classList.remove('revealed'); }); lock=false; first=null; sOut.textContent=String(scoreNow()); if (matches===10){ finish(); } }, 550);
+  }
+
+  function finish(){
+    timer.stop();
+    const score = scoreNow(); sOut.textContent=String(score);
+    const best=Math.max(score, +(localStorage.getItem(bestKey())||0)); localStorage.setItem(bestKey(), String(best)); hOut.textContent=String(best);
+    SFX.success();
+  }
+
+  $('#memStart').addEventListener('click', start);
+})();

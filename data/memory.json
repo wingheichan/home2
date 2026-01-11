@@ -1,0 +1,46 @@
+{
+  "Sample": {
+    "Words": [
+      {
+        "a": "cat",
+        "b": "gato"
+      },
+      {
+        "a": "dog",
+        "b": "perro"
+      },
+      {
+        "a": "bird",
+        "b": "pájaro"
+      },
+      {
+        "a": "cow",
+        "b": "vaca"
+      },
+      {
+        "a": "lion",
+        "b": "león"
+      },
+      {
+        "a": "tiger",
+        "b": "tigre"
+      },
+      {
+        "a": "horse",
+        "b": "caballo"
+      },
+      {
+        "a": "sheep",
+        "b": "oveja"
+      },
+      {
+        "a": "pig",
+        "b": "cerdo"
+      },
+      {
+        "a": "fish",
+        "b": "pez"
+      }
+    ]
+  }
+}
