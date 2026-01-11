@@ -143,3 +143,25 @@ select {
   padding: 6px 10px;           /* Extra padding for better feel */
   font-weight: bold;           /* Make text stand out */
 }
+
+
+/* ===== Memory: selected card highlight ===== */
+/* High-contrast outline + subtle glow for selected tiles */
+.card-tile.selected {
+  outline: 3px solid var(--accent);     /* thick colored outline */
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 70%),
+              0 6px 16px rgba(0, 0, 0, .15);
+  background: color-mix(in oklab, var(--card), var(--accent) 12%); /* soft tint */
+}
+
+/* Dark mode tweak: stronger tint for visibility */
+:root.theme-dark .card-tile.selected {
+  background: color-mix(in oklab, var(--card), var(--accent) 20%);
+}
+
+/* (Optional) hover affordance for clickable tiles */
+.card-tile:not(.matched):hover {
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent), transparent 80%);
+}
+
