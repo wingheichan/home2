@@ -165,3 +165,23 @@ select {
   box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent), transparent 80%);
 }
 
+/* Pulse animation on matched */
+@keyframes matchPulse {
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(22,163,74,.35); }
+  70%  { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(22,163,74,.0); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(22,163,74,.0); }
+}
+
+/* Memory: matched tiles green using theme-aware mix */
+.card-tile.matched {
+  background: color-mix(in oklab, var(--card), #16a34a 22%);
+  border-color: #16a34a;
+  color: var(--text);
+  outline: 2px solid #16a34a;
+  animation: matchPulse 350ms ease-out;
+}
+
+:root.theme-dark .card-tile.matched {
+  background: color-mix(in oklab, var(--card), #16a34a 30%); /* a bit stronger in dark mode */
+  color: var(--text);
+}
