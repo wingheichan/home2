@@ -49,27 +49,27 @@
     tilesNodes.forEach(tile=> tile.addEventListener('click', onTile));
   }
 
-  
-
-function onTile(e) {
+  function onTile(e) {
   const tile = e.currentTarget;
 
   // Mode flag (open/preview/closed)
   const modeEl = document.getElementById('memMode');
   const isOpenMode = modeEl && modeEl.value === 'open';
 
-  // In open mode: allow clicking already revealed tiles (so you can confirm matches)
-  // In other modes: block clicks on already revealed tiles
+  // Block illegal clicks
   if (
     lock ||
     tile.classList.contains('matched') ||
     (tile.classList.contains('revealed') && !isOpenMode)
   ) return;
 
-  // Reveal the tile (in open mode they are already revealed; this keeps it idempotent)
+  // Reveal tile if not already
   if (!tile.classList.contains('revealed')) {
     tile.classList.add('revealed');
   }
+
+  // Apply selected highlight to current click
+  tile.classList.add('selected');
 
   // First of the pair
   if (!first) {
@@ -79,34 +79,47 @@ function onTile(e) {
 
   // Second click: check for match
   if (first.dataset.key === tile.dataset.key && first !== tile) {
+    // Match
     first.classList.add('matched');
     tile.classList.add('matched');
+
+    // Clear selection highlights (both tiles)
+    first.classList.remove('selected');
+    tile.classList.remove('selected');
+
     matches++;
     corrOut.textContent = String(matches);
     SFX.match();
   } else {
+    // Mismatch → keep a brief selection highlight, then clear
     SFX.wrong();
   }
 
-  // Resolve, update score, and finish when all 10 pairs matched
+  // Resolve and update score
   lock = true;
   setTimeout(() => {
     // Only auto-close non-matched tiles in non-open modes
     if (!isOpenMode) {
       tilesNodes.forEach(t => {
-        if (!t.classList.contains('matched')) t.classList.remove('revealed');
+        if (!t.classList.contains('matched')) {
+          t.classList.remove('revealed');
+        }
       });
     }
+
+    // Always remove 'selected' from any non-matched tiles
+    tilesNodes.forEach(t => t.classList.remove('selected'));
 
     lock = false;
     first = null;
     sOut.textContent = String(scoreNow());
 
-    if (matches === 10) {
-      finish();
-    }
+    if (matches === 10) finish();
   }, 550);
 }
+
+
+
 
 
 
