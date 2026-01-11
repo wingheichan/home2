@@ -71,3 +71,58 @@ button.btn-primary:hover { filter: brightness(0.95); }
 .sudoku-grid input { width:100%; height:100%; border:none; text-align:center; background:transparent; color:var(--text); font-weight:600; }
 
 @media (max-width: 560px) { :root { --sidebar-width: 60px; } .icon { font-size: 20px; } .main { padding: 18px; } }
+
+
+/* ---------- PATCH: Sidebar collapsed ---------- */
+/* Hide labels completely when collapsed so icons center and remain visible */
+.sidebar:not(.sidebar--expanded) .label {
+  display: none !important;
+}
+
+/* Force icon buttons to center in the collapsed bar */
+.sidebar:not(.sidebar--expanded) .sidebar__btn {
+  justify-content: center !important;
+  padding-left: 0 !important;
+}
+
+/* ---------- PATCH: Dark mode buttons readable ---------- */
+/* Top segmented game/puzzle buttons */
+:root.theme-dark .top-tabs .seg-btn {
+  color: #fff !important;
+  border-color: #334155;
+  background: #0f172a;
+}
+:root.theme-dark .top-tabs .seg-btn[aria-selected="true"] {
+  background: #2563eb;
+  color: #fff !important;
+  border-color: #2563eb;
+}
+
+/* Generic buttons used across games (start/check/etc.) */
+:root.theme-dark button.btn {
+  color: #fff !important;
+  border-color: #334155;
+  background: #111827;
+}
+:root.theme-dark button.btn.btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff !important;
+}
+
+/* If your template uses .tab-btn instead of .seg-btn, keep this fallback */
+:root.theme-dark .tab-btn { color: #fff !important; }
+
+/* ---------- PATCH: Memory closed tiles look closed ---------- */
+/* Closed state: make text invisible by matching it to background (no layout jump) */
+.card-tile {
+  background: var(--text);
+  color: var(--text);
+}
+
+/* Revealed/matched: restore readable contrast */
+.card-tile.revealed,
+.card-tile.matched {
+  background: var(--card);
+  color: var(--text);
+}
