@@ -136,7 +136,7 @@ button.btn-primary:hover { filter: brightness(0.95); }
 
 
 select {
-  background-color: #99ccff;   /* Light Blue background */
+  background-color: #2563eb;   /* Light Blue background */
   color: #fff;                 /* White text */
   border: 3px solid #1e293b;   /* Thick dark border */
   border-radius: 8px;          /* Rounded corners */
