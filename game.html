@@ -36,12 +36,13 @@
 
 <main class="main">
   <div class="container">
+    
     <div class="top-tabs" role="tablist" aria-label="Select game">
-      <button class="seg-btn" data-target="panel-quiz" aria-selected="false">Quiz</button>
-      <button class="seg-btn" data-target="panel-memory" aria-selected="false">Memory</button>
-      <button class="seg-btn" data-target="panel-cloze" aria-selected="false">Fill in Missing Word</button>
+      <button class="seg-btn" data-target="panel-quiz" aria-selected="false">📝 Quiz</button>
+      <button class="seg-btn" data-target="panel-memory" aria-selected="false">🧠 Memory</button>
+      <button class="seg-btn" data-target="panel-cloze" aria-selected="false">✍️ Fill in</button>
     </div>
-
+    
     <section id="panel-quiz" class="top-panel card" role="tabpanel">
       <h1>Quiz</h1>
       <div class="hud">
@@ -53,11 +54,12 @@
       <div class="controls">
         <label>Category <select id="quizCat"></select></label>
         <label>Subcategory <select id="quizSub"></select></label>
+        <button id="quizPreview" class="btn">Preview</button>
         <button id="quizStart" class="btn btn-primary">Start Quiz</button>
       </div>
       <div id="quizWrap"></div>
     </section>
-
+    
     <section id="panel-memory" class="top-panel card" role="tabpanel">
       <h1>Memory</h1>
       <div class="hud">
