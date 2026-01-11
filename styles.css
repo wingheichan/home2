@@ -126,3 +126,11 @@ button.btn-primary:hover { filter: brightness(0.95); }
   background: var(--card);
   color: var(--text);
 }
+
+/* uniform size for game tab buttons (also included below) */
+.top-tabs .seg-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-width: 150px; height: 40px; padding: 8px 14px; }
+
+/* flip animation */
+.card-tile { transform-style: preserve-3d; transition: transform 280ms ease, background 180ms ease, color 180ms ease; }
+.card-tile:not(.revealed):not(.matched) { transform: rotateY(180deg); }
+
