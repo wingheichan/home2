@@ -50,37 +50,64 @@
   }
 
   
-function onTile(e){
+
+function onTile(e) {
   const tile = e.currentTarget;
-- if (lock || tile.classList.contains('matched') || tile.classList.contains('revealed')) return;
-+ const mode = document.getElementById('memMode').value;
-+ const isOpenMode = (mode === 'open');
-+ if (lock || tile.classList.contains('matched') || (tile.classList.contains('revealed') && !isOpenMode)) return;
 
-  tile.classList.add('revealed');
-  if (!first){ first = tile; return; }
+  // Mode flag (open/preview/closed)
+  const modeEl = document.getElementById('memMode');
+  const isOpenMode = modeEl && modeEl.value === 'open';
 
-  if (first.dataset.key === tile.dataset.key && first !== tile){
+  // In open mode: allow clicking already revealed tiles (so you can confirm matches)
+  // In other modes: block clicks on already revealed tiles
+  if (
+    lock ||
+    tile.classList.contains('matched') ||
+    (tile.classList.contains('revealed') && !isOpenMode)
+  ) return;
+
+  // Reveal the tile (in open mode they are already revealed; this keeps it idempotent)
+  if (!tile.classList.contains('revealed')) {
+    tile.classList.add('revealed');
+  }
+
+  // First of the pair
+  if (!first) {
+    first = tile;
+    return;
+  }
+
+  // Second click: check for match
+  if (first.dataset.key === tile.dataset.key && first !== tile) {
     first.classList.add('matched');
     tile.classList.add('matched');
-    matches++; corrOut.textContent = String(matches);
+    matches++;
+    corrOut.textContent = String(matches);
     SFX.match();
   } else {
     SFX.wrong();
   }
 
+  // Resolve, update score, and finish when all 10 pairs matched
   lock = true;
   setTimeout(() => {
--   tilesNodes.forEach(t => { if (!t.classList.contains('matched')) t.classList.remove('revealed'); });
-+   if (!isOpenMode) {
-+     tilesNodes.forEach(t => { if (!t.classList.contains('matched')) t.classList.remove('revealed'); });
-+   }
+    // Only auto-close non-matched tiles in non-open modes
+    if (!isOpenMode) {
+      tilesNodes.forEach(t => {
+        if (!t.classList.contains('matched')) t.classList.remove('revealed');
+      });
+    }
+
     lock = false;
     first = null;
     sOut.textContent = String(scoreNow());
-    if (matches === 10){ finish(); }
+
+    if (matches === 10) {
+      finish();
+    }
   }, 550);
 }
+
 
 
   function finish(){
