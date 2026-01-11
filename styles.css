@@ -134,3 +134,12 @@ button.btn-primary:hover { filter: brightness(0.95); }
 .card-tile { transform-style: preserve-3d; transition: transform 280ms ease, background 180ms ease, color 180ms ease; }
 .card-tile:not(.revealed):not(.matched) { transform: rotateY(180deg); }
 
+
+select {
+  background-color: #2563eb;   /* Blue background */
+  color: #fff;                 /* White text */
+  border: 3px solid #1e293b;   /* Thick dark border */
+  border-radius: 8px;          /* Rounded corners */
+  padding: 6px 10px;           /* Extra padding for better feel */
+  font-weight: bold;           /* Make text stand out */
+}
