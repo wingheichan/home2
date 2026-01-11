@@ -18,15 +18,15 @@
     tilesNodes = $$('.card-tile');
   }
 
-
-  document.getElementById('memPreview').addEventListener('click', ()=>{
-    const list = ((DATA[selCat.value]||{})[selSub.value]||[]);
-    if(!list.length){ showPreviewOverlay('Memory Preview','<p>No items.</p>'); return; }
-    const html = list.map((p,idx)=>`<div style="margin:6px 0">${idx+1}. <strong>${p.a}</strong> ⇄ <strong>${p.b}</strong></div>`).join('');
-    showPreviewOverlay(`Memory Preview — ${selCat.value} / ${selSub.value}`, html);
+  document.getElementById('memPreview').addEventListener('click', () => {
+    const list = ((DATA[selCat.value] || {})[selSub.value] || []);
+    if (!list.length) { AppUtil.showPreview('Memory Preview', '<p>No items.</p>'); return; }
+    const html = list.map((p, i) =>
+      `<div style="margin:6px 0">${i+1}. <strong>${p.a}</strong> ⇄ <strong>${p.b}</strong></div>`
+    ).join('');
+    AppUtil.showPreview(`Memory Preview — ${selCat.value} / ${selSub.value}`, html);
   });
 
-  
   function start(){
     buildTiles(); first=null; lock=false; matches=0; moves=0; corrOut.textContent='0'; sOut.textContent='0'; timer.reset();
     const mode = selMode.value; SFX.click();
