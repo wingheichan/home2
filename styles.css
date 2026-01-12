@@ -302,4 +302,24 @@ select {
   .sidebar__bottom { gap: 6px; }
 }
 
+/* ===== Memory: bound grid width so cards stay small ===== */
+#panel-memory .memory-grid {
+  /* Center the grid, cap its width so tiles don't get huge */
+  max-width: 480px;       /* adjust: 400–560px depending on taste */
+  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+#panel-memory .card-tile {
+  /* Keep tiles square and scale within grid */
+  aspect-ratio: 1 / 1;
+  height: auto;           /* aspect-ratio governs height */
+}
+
+/* Very small phones: tighten spacing further */
+@media (max-width: 380px) {
+  #panel-memory .memory-grid { max-width: 360px; gap: 8px; }
+}
+
 
