@@ -4,25 +4,25 @@
       { "s": "ik heb zin in om te eten:\n j'ai_____ ", "a": "envie de manger" },
       { "s": "ik ontvang vijf euro per maand:\n je _____cinq euros par mois ", "a": "recois" },
       { "s": "ik herinner me mijn verjaardag:\n Je _____ mon anniversaire", "a": "me souviens de" },
-      { "s": "morgen zal ik thuis zijn :\n Demain, _____ a la maison ", "a": "je serai" },
+      { "s": "morgen zal ik thuis zijn :\n Demain, _____ à la maison ", "a": "je serai" },
       { "s": "ik zal mijn huiswerk af hebben voor het avondeten :\n _____ fini mes devoirs avant le diner ", "a": "j'aurai" },
       { "s": "ik zal alles voor je doen :\n _____ tout pour toi", "a": "je ferai" },
       { "s": "bedankt voor de moeite :\n Merci pour _____ ", "a": "l'effort" },
       { "s": "eerst gaan we de woorden lezen :\n _____, mous allons lire les mots ", "a": "d'abord" },
       { "s": "vervolgens gaan we de woorden schrijven :\n _____, nous allons écrire les mots ", "a": "ensuite" },
-      { "s": "Tenslotte gaan we de woorden leren :\n _____, nous allons appendre les mots ", "a": "finalement" }
+      { "s": "tenslotte gaan we de woorden leren :\n _____, nous allons appendre les mots ", "a": "finalement" }
     ],
    "Marche 15_2": [
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" },
-      { "s": "_____ ", "a": "x" }
+      { "s": "het doet me plezier:\n ça _____ ", "a": "me fait plaisir" },
+      { "s": "buiten dienst :\n _____ ", "a": "hors service" },
+      { "s": "het wachtwoord :\n_____ ", "a": "le mot de passe" },
+      { "s": "afspraak om 20:00 :\n _____ à 20h00 ", "a": "rendez-vous" },
+      { "s": "dit bericht is erg belangrijk :\n ce message _____ ", "a": "est tres important" },
+      { "s": "deze leraar is aardig :\n ce _____ ", "a": "prof est gentil" },
+      { "s": "een perfecte score :\n _____ ", "a": "un score parfait" },
+      { "s": "de weg naar de zon :\n _____ ", "a": "la route du soleil" },
+      { "s": "goedenavond, heeft u gereserveerd :\n_____ une réservation", "a": "bonsoir, vous avez" },
+      { "s": "eerst gaan we de woorden lezen :\n _____ ", "a": "d'abord, nous allons lire les mots" }
     ]
   }
 }
