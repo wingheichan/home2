@@ -8,7 +8,7 @@
   function loadHigh(){ const v=JSON.parse(localStorage.getItem(bestKey())||'0'); hOut.textContent = v||0; }
   fill(selCat, Object.keys(DATA)); function updateSub(){ fill(selSub, Object.keys(DATA[selCat.value]||{})); loadHigh(); } selCat.addEventListener('change', updateSub); selSub.addEventListener('change', loadHigh); selMode.addEventListener('change', loadHigh); updateSub();
 
-  let first=null, lock=false, matches=0, moves=0, totalPairs=10, tilesNodes=[];
+  let first=null, lock=false, matches=0, moves=0, totalPairs=8, tilesNodes=[];
   function buildTiles(){
     const pairs = ((DATA[selCat.value]||{})[selSub.value]||[]);
     const pool = pairs.length>=totalPairs ? pairs.slice().sort(()=>Math.random()-0.5).slice(0,totalPairs)
