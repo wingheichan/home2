@@ -286,4 +286,20 @@ select {
 ``
 
 
+/* Ensure toggle buttons visible on tablets */
+.sidebar__bottom {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.sidebar__bottom .label { display: none; } /* hide text */
+.sidebar__bottom .sidebar__btn {
+  width: auto;
+  min-width: 44px;
+  height: 44px;
+}
+@media (max-width: 1024px) {
+  .sidebar__bottom { gap: 6px; }
+}
+
 
