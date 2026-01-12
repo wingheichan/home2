@@ -12,7 +12,7 @@
   function buildTiles(){
     const pairs = ((DATA[selCat.value]||{})[selSub.value]||[]);
     const pool = pairs.length>=totalPairs ? pairs.slice().sort(()=>Math.random()-0.5).slice(0,totalPairs)
-                  : pairs.concat(pairs).slice(0,totalPairs); // ensure at least 10
+                  : pairs.concat(pairs).slice(0,totalPairs); // ensure at least totalPairs=8
     const tiles = pool.flatMap(p=>[{key:p.a, val:p.a},{key:p.a, val:p.b}]).sort(()=>Math.random()-0.5);
     grid.innerHTML = tiles.map((t,i)=>`<div class="card-tile" data-key="${t.key}" data-i="${i}">${t.val}</div>`).join('');
     tilesNodes = $$('.card-tile');
