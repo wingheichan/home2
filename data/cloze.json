@@ -1,16 +1,16 @@
 {
   "Formidable": {
     "Marche 15_1": [
-      { "s": "ik heb zin in om te eten: j'ai_____ ", "a": "envie de manger" },
-      { "s": "ik ontvang vijf euro per maand: je _____cinq euros par mois ", "a": "recois" },
-      { "s": "ik herinner me mijn verjaardag: Je _____ mon anniversaire", "a": "me souviens de" },
-      { "s": "morgen zal ik thuis zijn : Demain, _____ a la maison ", "a": "je serai" },
-      { "s": "ik zal mijn huiswerk af hebben voor het avondeten : _____ fini mes devoirs avant le diner ", "a": "j'aurai" },
-      { "s": "ik zal alles voor je doen : _____ tout pour toi", "a": "je ferai" },
-      { "s": "bedankt voor de moeite : Merci pour _____ ", "a": "l'effort" },
-      { "s": "eerst gaan we de woorden lezen : _____, mous allons lire les mots ", "a": "d'abord" },
-      { "s": "vervolgens gaan we de woorden schrijven : _____, nous allons écrire les mots ", "a": "ensuite" },
-      { "s": "Tenslotte gaan we de woorden leren : _____, nous allons appendre les mots ", "a": "finalement" }
+      { "s": "ik heb zin in om te eten:\n j'ai_____ ", "a": "envie de manger" },
+      { "s": "ik ontvang vijf euro per maand:\n je _____cinq euros par mois ", "a": "recois" },
+      { "s": "ik herinner me mijn verjaardag:\n Je _____ mon anniversaire", "a": "me souviens de" },
+      { "s": "morgen zal ik thuis zijn :\n Demain, _____ a la maison ", "a": "je serai" },
+      { "s": "ik zal mijn huiswerk af hebben voor het avondeten :\n _____ fini mes devoirs avant le diner ", "a": "j'aurai" },
+      { "s": "ik zal alles voor je doen :\n _____ tout pour toi", "a": "je ferai" },
+      { "s": "bedankt voor de moeite :\n Merci pour _____ ", "a": "l'effort" },
+      { "s": "eerst gaan we de woorden lezen :\n _____, mous allons lire les mots ", "a": "d'abord" },
+      { "s": "vervolgens gaan we de woorden schrijven :\n _____, nous allons écrire les mots ", "a": "ensuite" },
+      { "s": "Tenslotte gaan we de woorden leren :\n _____, nous allons appendre les mots ", "a": "finalement" }
     ],
    "Marche 15_2": [
       { "s": "_____ ", "a": "x" },
