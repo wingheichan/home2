@@ -231,3 +231,26 @@ select {
   .memory-grid { gap: 8px; }
 }
 
+/* Place toggle buttons next to each other and hide their text labels */
+.sidebar__bottom {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
+.sidebar__bottom .label {
+  display: none !important;  /* hide 'Theme' / 'Sound' text */
+}
+.sidebar__bottom .sidebar__btn {
+  width: auto;
+  height: 44px;
+}
+
+/* On mobile bottom bar keep toggles tight */
+@media (max-width: 640px) {
+  .sidebar__bottom { gap: 8px; }
+}
+
+
+
