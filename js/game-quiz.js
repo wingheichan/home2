@@ -22,7 +22,39 @@
 
 
   function scoreNow(){ const secs = Math.floor(totalMs / 1000); return (50*correct) + Math.max(0, 51 - secs); }
-  function finish(){ timer.stop(); const score=scoreNow(); sOut.textContent=String(score); const best=Math.max(score, +(localStorage.getItem(bestKey())||0)); localStorage.setItem(bestKey(), String(best)); hOut.textContent=String(best); const totalTime = AppUtil.Timer.format(totalMs); wrap.innerHTML = `<p><strong>Done!</strong> Correct: ${correct}/${questions.length} — Time: ${totalTime — Score: ${score}</p><button class="btn" id="quizAgain">Play again</button>`; $('#quizAgain').addEventListener('click', start); SFX.success(); }
+ 
+function finish() {
+  // Stop the current (per-question) timer
+  timer.stop();
+
+  // Compute score using totalMs (sum of all question times)
+  const score = scoreNow();
+  sOut.textContent = String(score);
+
+  // Highscore (per category/subcategory)
+  const best = Math.max(score, +(localStorage.getItem(bestKey()) || 0));
+  localStorage.setItem(bestKey(), String(best));
+  hOut.textContent = String(best);
+
+  // Human-readable total time from totalMs
+  const totalTime = AppUtil.Timer.format(totalMs);
+
+  // ✅ Use real backticks here in the JS file, NOT &lt; or &gt; escaped versions
+  wrap.innerHTML = `
+    <p>
+      <strong>Done!</strong>
+      Correct: ${correct}/${questions.length}
+      — Time: ${totalTime}
+      — Score: ${score}
+    </p>
+    <button class="btn" id="quizAgain">Play again</button>
+  `;
+
+  document.getElementById('quizAgain').addEventListener('click', start);
+  SFX.success();
+}
+``
+
   
 function render(){
   if (!questions.length){ wrap.innerHTML = '<p>No items in this subcategory.</p>'; return; }
