@@ -252,5 +252,38 @@ select {
   .sidebar__bottom { gap: 8px; }
 }
 
+/* ===== Quiz answers: base contrast ===== */
+.quiz .choice {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+:root.theme-dark .quiz .choice {
+  background: #111827;     /* dark slate */
+  color: #ffffff;          /* white text */
+  border-color: #334155;   /* slate border */
+}
+
+/* ===== Quiz answers: feedback colors ===== */
+.quiz .choice.correct {
+  background: #dcfce7;     /* light green */
+  border-color: #16a34a;   /* green border */
+  color: #065f46;          /* dark teal text */
+}
+
+.quiz .choice.wrong {
+  background: #fee2e2;     /* light red */
+  border-color: #dc2626;   /* red border */
+  color: #7f1d1d;          /* deep red text */
+}
+
+/* Space above the Next button row */
+.next-row { margin-top: 12px; }
+``
+
 
 
