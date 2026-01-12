@@ -36,9 +36,9 @@ function finish() {
   sOut.textContent = String(score);
 
   // Highscore (per category/subcategory)
-  const best = Math.max(score, +(localStorage.getItem(bestKey()) || 0));
-  localStorage.setItem(bestKey(), String(best));
-  hOut.textContent = String(best);
+  //const best = Math.max(score, +(localStorage.getItem(bestKey()) || 0));
+  //localStorage.setItem(bestKey(), String(best));
+  //hOut.textContent = String(best);
 
   // Human-readable total time from totalMs
   const totalTime = AppUtil.Timer.format(totalMs);
