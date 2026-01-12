@@ -52,13 +52,7 @@ button.btn { cursor:pointer; }
 button.btn-primary { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
 button.btn-primary:hover { filter: brightness(0.95); }
 
-/* Quiz right/wrong colors */
-.quiz .choice { padding:10px 12px; border:1px solid var(--border); border-radius:12px; cursor:pointer; background: var(--card); }
-.quiz .choice.correct { background:#dcfce7; border-color:#16a34a; color:#065f46; }
-.quiz .choice.wrong   { background:#fee2e2; border-color:#dc2626; color:#7f1d1d; }
-
 /* Memory grid fixed 5x4 */
-.memory-grid { display:grid; grid-template-columns: repeat(5, minmax(90px, 1fr)); gap:10px; }
 .card-tile { position:relative; height:90px; border:1px solid var(--border); border-radius:12px; background: var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; user-select:none; }
 .card-tile.revealed, .card-tile.matched { background: color-mix(in oklab, var(--card), var(--accent) 16%); }
 .card-tile.matched { outline:2px solid var(--accent); }
