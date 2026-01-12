@@ -185,3 +185,49 @@ select {
   background: color-mix(in oklab, var(--card), #16a34a 30%); /* a bit stronger in dark mode */
   color: var(--text);
 }
+
+
+/* ===== Mobile: sidebar becomes a bottom bar ===== */
+@media (max-width: 640px) {
+  .sidebar {
+    position: fixed;
+    top: auto;
+    bottom: 0; left: 0; right: 0;
+    width: 100vw; height: 56px;
+    background: var(--card);
+    border-right: none;
+    border-top: 1px solid var(--border);
+    display: flex; flex-direction: row; align-items: center;
+    padding: 6px 8px; gap: 8px;
+    overflow-x: auto; overflow-y: hidden;
+    z-index: 1000;
+  }
+  /* Hide brand/toggle and labels to save space */
+  .sidebar__brand, .sidebar__toggle { display: none !important; }
+  .sidebar .label { display: none !important; }
+
+  .sidebar__menu { display: flex; flex-direction: row; gap: 8px; width: auto; }
+  .sidebar__bottom { margin: 0; margin-left: auto; display: flex; gap: 6px; }
+
+  /* Content no longer offset by left sidebar; reserve room for bottom bar */
+  .main { margin-left: 0 !important; padding-bottom: 72px; }
+}
+
+/* ===== Memory grid: 4×4, responsive cards stay in-bounds ===== */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 10px;
+}
+
+/* Use square tiles that scale with the grid cell width */
+.card-tile {
+  aspect-ratio: 1 / 1;   /* square cards */
+  height: auto;          /* let aspect-ratio drive height */
+}
+
+/* For extra-small screens, you can tighten gaps a bit */
+@media (max-width: 380px) {
+  .memory-grid { gap: 8px; }
+}
+
