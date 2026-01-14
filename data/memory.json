@@ -251,7 +251,7 @@
       { "a": "vincere", "b": "(over)winnen" },
       { "a": "vita", "b": "(het)leven" }
    ],
-  "7_Triumphus_1": [
+  "8_Triumphus_1": [
       { "a": "ante", "b": "voor" },
       { "a": "aut", "b": "of" },
       { "a": "complere", "b": "vullen" },
@@ -269,7 +269,7 @@
       { "a": "nonne", "b": "(toch) zeker wel" },
       { "a": "pecunia", "b": "geld" }
     ],
-  "7_Triumphus_2": [
+  "8_Triumphus_2": [
       { "a": "incipere, incipio", "b": "beginnen" },
       { "a": "initium", "b": "begin" },
       { "a": "manere", "b": "blijven" },
@@ -287,7 +287,7 @@
       { "a": "vetare", "b": "verbieden" },
       { "a": "via", "b": "weg, straat" }
    ],
-  "8_Gladiatores_1": [
+  "9_Gladiatores_1": [
       { "a": "cito bijw", "b": "snel" },
       { "a": "claudere", "b": "sluiten" },
       { "a": "currere", "b": "rennen" },
@@ -305,7 +305,7 @@
       { "a": "oculus", "b": "oog" },
       { "a": "posse", "b": "kunnen" }
     ],
-  "8_Gladiatores_2": [
+  "9_Gladiatores_2": [
       { "a": "ita", "b": "zo" },
       { "a": "iterum", "b": "weer, opnieuw" },
       { "a": "nemo, gen neminis", "b": "niemand" },
@@ -323,7 +323,7 @@
       { "a": "ubique", "b": "overal" },
       { "a": "valde", "b": "zeer, erg" }
      ],
-  "9_Spectacula_1": [
+  "10_Spectacula_1": [
       { "a": "a/ab + abl", "b": "vanaf, door" },
       { "a": "agmen, agmina", "b": "rij, stoet" },
       { "a": "caput, capita", "b": "hoofd" },
@@ -341,7 +341,7 @@
       { "a": "resistere", "b": "weerstand bieden" },
       { "a": "salutare", "b": "(be)groeten" }
   ],
-  "9_Spectacula_2": [   
+  "10_Spectacula_2": [   
       { "a": "frustra", "b": "tevergeefs" },
       { "a": "homo, homines", "b": "mens, man" },
       { "a": "leo, leones", "b": "leeuw" },
@@ -359,7 +359,7 @@
       { "a": "vinum", "b": "wijn" },
       { "a": "vulnerare", "b": "verwonden" }
      ],
-  "10_Pugna_1": [   
+  "11_Pugna_1": [   
       { "a": "adhuc", "b": "nog, tot nu toe" },
       { "a": "antea", "b": "eerder" },
       { "a": "appropinquare+dat", "b": "naderen" },
@@ -377,7 +377,7 @@
       { "a": "quidem...sed", "b": "wel(iswaar)...maar" },
       { "a": "scire", "b": "weten" }
     ],
-  "10_Pugna_2": [ 
+  "11_Pugna_2": [ 
       { "a": "domum", "b": "naar huis" },
       { "a": "hora", "b": "uur" },
       { "a": "id nom/acc", "b": "dit" },
@@ -395,7 +395,7 @@
       { "a": "victor, victores", "b": "(over)winnaar" },
       { "a": "vitare", "b": "vermijden" }
  ],
-  "11_Circus Maximus_1": [ 
+  "12_Circus Maximus_1": [ 
       { "a": "cecidi", "b": "pf van cadere" },
       { "a": "cedere", "b": "(aan de kant)gaan, toegeven" },
       { "a": "certamen, certamina", "b": "wedstrijd" },
@@ -413,7 +413,7 @@
       { "a": "potui", "b": "pf van posse" },
       { "a": "regere", "b": "besturen, leiden" }
      ],
-  "11_Circus Maximus_2": [ 
+  "12_Circus Maximus_2": [ 
       { "a": "heri", "b": "gisteren" },
       { "a": "incepi", "b": "pf van incipere" },
       { "a": "iniuria", "b": "onrecht" },
