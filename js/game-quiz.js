@@ -7,8 +7,14 @@
   const $ = s=>document.querySelector(s); const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
   const selCat=$('#quizCat'), selSub=$('#quizSub'), wrap=$('#quizWrap'); const tOut=$('#quizTime'); const cOut=$('#quizCorrect'); const sOut=$('#quizScore'); const hOut=$('#quizHigh'); const timer=new Timer(tOut);
   function fill(sel, items){ sel.innerHTML=''; items.forEach(v=> sel.append(new Option(v,v))); }
-  function bestKey(){ return `highscore:quiz:${selCat.value}:${selSub.value}`; }
-  function loadHigh(){ const v=JSON.parse(localStorage.getItem(bestKey())||'0'); hOut.textContent = v||0; }
+  function bestKey(){ return `quiz:${selCat.value}:${selSub.value}`; }
+  
+function loadHigh() {
+  const raw = localStorage.getItem(bestKey());
+  const v = raw ? JSON.parse(raw) : 0;
+  hOut.textContent = String(v);
+}
+
   fill(selCat, Object.keys(DATA)); function updateSub(){ fill(selSub, Object.keys(DATA[selCat.value]||{})); loadHigh(); } selCat.addEventListener('change', updateSub); selSub.addEventListener('change', loadHigh); updateSub();
   let idx=0, correct=0, questions=[]; function start(){totalMs = 0; const list = ((DATA[selCat.value] || {})[selSub.value] || []); questions = [...list].sort(() => Math.random() - 0.5).slice(0, 10); totalScore = 0;totalMs = 0; if(!questions.length){ wrap.innerHTML='<p>No items.</p>'; return; } idx=0; correct=0; cOut.textContent='0'; sOut.textContent='0'; timer.reset(); timer.start(); render(); SFX.click(); }
   
@@ -57,12 +63,14 @@ function finish() {
   document.getElementById('quizAgain').addEventListener('click', start);
   SFX.success();
   
-const bestKey = `quiz:${selCat.value}:${selSub.value}`;
-const best = JSON.parse(localStorage.getItem(bestKey) || '0');
-if (totalScore > best) {
-  localStorage.setItem(bestKey, JSON.stringify(totalScore));
+
+const key = bestKey();
+const prev = JSON.parse(localStorage.getItem(key) || '0');
+if (totalScore > prev) {
+  localStorage.setItem(key, JSON.stringify(totalScore));
 }
-hOut.textContent = String(Math.max(totalScore, best));
+hOut.textContent = String(Math.max(totalScore, prev));
+
 
 }
 ``
@@ -70,7 +78,12 @@ hOut.textContent = String(Math.max(totalScore, best));
   
 function render(){
   if (!questions.length){ wrap.innerHTML = '<p>No items in this subcategory.</p>'; return; }
-  if (idx >= questions.length){ end(); return; }
+  
+if (idx >= questions.length) {
+  finish(); // not end()
+  return;
+}
+
 
   const q = questions[idx];
 
@@ -131,7 +144,7 @@ if (ok) {
     // Show Next button to continue
     const nextRow = document.createElement('div');
     nextRow.className = 'next-row';
-    nextRow.innerHTML = '<button id="quizNext" class="btn btn-primary">Next</button>';
+    nextRow.innerHTML = '<button id="quizNext" class="btn">Next</button>';
     wrap.appendChild(nextRow);
 
     document.getElementById('quizNext').addEventListener('click', () => {
