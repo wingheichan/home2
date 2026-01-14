@@ -48,6 +48,14 @@ function end(){
   `;
   document.getElementById('clozeAgain').addEventListener('click', start);
   SFX.success();
+
+  const key = bestKey();
+const prev = JSON.parse(localStorage.getItem(key) || '0');
+if (totalScore > prev) {
+  localStorage.setItem(key, JSON.stringify(totalScore));
+}
+hOut.textContent = String(Math.max(totalScore, prev));
+
 }
 ``
 
