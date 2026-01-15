@@ -1,6 +1,6 @@
 {
   "Latijn, denkwijs": {
-    "blz 10": [
+    "blz 10_a": [
       { "a": "suntne", "b": "zijn zij?"},
       { "a": "inquit", "b": "hij/zij zegt"},
       { "a": "sunt", "b": "zij zijn"},
@@ -13,7 +13,9 @@
       { "a": "quoque", "b": "ook"},
       { "a": "sed", "b": "maar"},
       { "a": "non", "b": "niet"},
-      { "a": "videt", "b": "hij/zij ziet"},
+      { "a": "videt", "b": "hij/zij ziet"}
+    ],
+    "blz 10_b": [
       { "a": "tu", "b": "jij"},
       { "a": "quis/qui", "b": "wie(ev/mv)"},
       { "a": "vident", "b": "zij zien"},
