@@ -28,7 +28,8 @@
       { "a": "es", "b": "jij bent"},
       { "a": "estis", "b": "jullie zijn"},
       { "a": "interrogat", "b": "hij/zij vraagt"}
-    ],  
+    ]
+  },
   "Formidable": {
     "Marche 15_1": [
       { "a": "j'ai envie de", "b": "ik heb zin in" },
