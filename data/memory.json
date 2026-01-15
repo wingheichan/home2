@@ -1,4 +1,34 @@
 {
+  "Latijn, denkwijs": {
+    "blz 10": [
+      { "a": "suntne", "b": "zijn zij?"},
+      { "a": "inquit", "b": "hij/zij zegt"},
+      { "a": "sunt", "b": "zij zijn"},
+      { "a": "Romae", "b": "in Rome"},
+      { "a": "novum/novo", "b": "nieuw"},
+      { "a": "templum", "b": "tempel"},
+      { "a": "in templo", "b": "in de tempel"},
+      { "a": "antiquum", "b": "oud"},
+      { "a": "est", "b": "hij/zij is"},
+      { "a": "quoque", "b": "ook"},
+      { "a": "sed", "b": "maar"},
+      { "a": "non", "b": "niet"},
+      { "a": "videt", "b": "hij/zij ziet"},
+      { "a": "tu", "b": "jij"},
+      { "a": "quis/qui", "b": "wie(ev/mv)"},
+      { "a": "vident", "b": "zij zien"},
+      { "a": "salve", "b": "hallo (tegen 1 persoon)"},
+      { "a": "salvete", "b": "hallo (tegen 2+ personen)"},
+      { "a": "puer", "b": "jongen"},
+      { "a": "magnus", "b": "groot"},
+      { "a": "parvus", "b": "klein"},
+      { "a": "eos", "b": "hen"},
+      { "a": "salutat", "b": "hij/zij groet"},
+      { "a": "sum", "b": "ik ben"},
+      { "a": "es", "b": "jij bent"},
+      { "a": "estis", "b": "jullie zijn"},
+      { "a": "interrogat", "b": "hij/zij vraagt"}
+    ],  
   "Formidable": {
     "Marche 15_1": [
       { "a": "j'ai envie de", "b": "ik heb zin in" },
